@@ -4,6 +4,7 @@ const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:800
 export const API_KEY = process.env.NEXT_PUBLIC_API_KEY || 'qa-garden-secret-key';
 
 export const api = axios.create({
+    baseURL: `${BACKEND_URL}/crawler`,
     headers: {
         'Content-Type': 'application/json',
         'X-API-Key': API_KEY,
