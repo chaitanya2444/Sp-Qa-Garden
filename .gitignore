@@ -63,4 +63,7 @@ BACKUP_*/
 locators/
 test_*.json
 *_test.py
+triage_db.json
+*.pdf
+*.png
 
