@@ -3,7 +3,8 @@ export type AgentType =
     | 'test_generator'
     | 'script_generator'
     | 'executor'
-    | 'triage';
+    | 'triage'
+    | 'jira';
 
 export type AgentStatus =
     | 'pending'
@@ -43,6 +44,7 @@ export const AGENT_LABELS: Record<AgentType, string> = {
     script_generator: 'Script Generator',
     executor: 'Test Executor',
     triage: 'Failure Triage',
+    jira: 'Jira Bug Sync',
 };
 
 export const AGENT_DESCRIPTIONS: Record<AgentType, string> = {
@@ -51,4 +53,5 @@ export const AGENT_DESCRIPTIONS: Record<AgentType, string> = {
     script_generator: 'Creates executable Playwright scripts',
     executor: 'Runs tests in Docker, captures videos/screenshots/traces',
     triage: 'Analyzes failures using LLM/BERT and suggests fixes',
+    jira: 'Syncs triaged bugs directly to Jira board',
 };
