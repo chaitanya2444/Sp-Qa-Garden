@@ -23,6 +23,12 @@ try:
 except ImportError:
     HAS_LANGCHAIN_DEPS = False
     logger.warning("Optional AI dependencies (langchain-groq, langchain-google-genai, etc.) not found. Rich interactions will be disabled.")
+    
+    # Prevent NameError during class compilation
+    class ChatGroq: pass
+    class ChatOpenAI: pass
+    class ChatHuggingFace: pass
+    class ChatGoogleGenerativeAI: pass
 
 try:
     from tenacity import retry, stop_after_attempt, wait_exponential
