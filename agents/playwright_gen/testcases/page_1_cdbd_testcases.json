@@ -1,0 +1,49 @@
+{
+  "testCases": [
+    {
+      "id": "TC_Login_Flow_1",
+      "title": "Verify successful login flow",
+      "url": "https://www.snappod.ai/login",
+      "inputs": {
+        "INPUT_EMAIL_483_296": "test@example.com"
+      },
+      "steps": [
+        "Navigate to https://www.snappod.ai/login",
+        "Enter 'test@example.com' into the Email field",
+        "Click the 'Login' button"
+      ],
+      "expected": [
+        "Login successful and user is redirected to the dashboard (verify by checking the URL)"
+      ]
+    },
+    {
+      "id": "TC_Navigation_Sign_Up_2",
+      "title": "Verify navigation to Sign Up page",
+      "url": "https://www.snappod.ai/login",
+      "inputs": {},
+      "steps": [
+        "Navigate to https://www.snappod.ai/login",
+        "Click the 'Sign Up Here' link"
+      ],
+      "expected": [
+        "User is redirected to the Sign Up page (verify URL contains '/signup')"
+      ]
+    },
+    {
+      "id": "TC_Navigation_Forgot_Password_3",
+      "title": "Verify navigation to Forgot Password flow",
+      "url": "https://www.snappod.ai/login",
+      "inputs": {},
+      "steps": [
+        "Navigate to https://www.snappod.ai/login",
+        "Click the 'Forgot Password' link"
+      ],
+      "expected": [
+        "User is redirected to the Forgot Password page (verify URL contains '/forgot-password' or relevant identifier)"
+      ]
+    }
+  ],
+  "url": "https://www.snappod.ai/login",
+  "generatedAt": "2026-02-19T16:40:27.275153",
+  "runId": "job_1"
+}

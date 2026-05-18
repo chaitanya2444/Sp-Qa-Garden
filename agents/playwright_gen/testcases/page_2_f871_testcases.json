@@ -1,0 +1,43 @@
+{
+  "testCases": [
+    {
+      "id": "TC_Authentication_01",
+      "title": "Verify Sign Up Flow",
+      "url": "https://www.snappod.ai/signup",
+      "inputs": {
+        "INPUT_EL": "John",
+        "INPUT_EL_844_140": "Doe",
+        "INPUT_EL_604_330": "john.doe@example.com",
+        "INPUT_EL_604_424": "P@sswOrd123",
+        "INPUT_EL_844_424": "P@sswOrd123"
+      },
+      "steps": [
+        "Navigate to https://www.snappod.ai/signup",
+        "Enter 'John' into the field",
+        "Enter 'Doe' into the field",
+        "Enter 'john.doe@example.com' into the field",
+        "Enter 'P@sswOrd123' into the field",
+        "Enter 'P@sswOrd123' into the field",
+        "Click the 'btn_sign_up' locator"
+      ],
+      "expected": [
+        "Success message is displayed"
+      ]
+    },
+    {
+      "id": "TC_Navigation_01",
+      "title": "Verify Sign In Link Navigation",
+      "url": "https://www.snappod.ai/signup",
+      "inputs": {},
+      "steps": [
+        "Navigate to https://www.snappod.ai/signup",
+        "Click the 'link_sign_in_here' locator",
+        "Verify URL contains '/login'"
+      ],
+      "expected": []
+    }
+  ],
+  "url": "https://www.snappod.ai/signup",
+  "generatedAt": "2026-02-19T16:40:27.288693",
+  "runId": "job_1"
+}

@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+playwright
+groq
+httpx
+requests
+beautifulsoup4
+python-dotenv
+psutil
+                                                                                                                                                                                                                                                                                                                                                                               

@@ -1,0 +1,18 @@
+# Crawler Artifacts
+*.png
+*.log
+
+# Locator Storage
+locators_old/
+locators_new/
+
+# Python Environment
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# Diagnostic Files
+diag_pydantic.py
+snappod_live_crawl_*.log
+jellypod_*.log

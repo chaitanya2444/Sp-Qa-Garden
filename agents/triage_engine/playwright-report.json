@@ -1,0 +1,963 @@
+{
+  "config": {
+    "configFile": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\playwright.config.js",
+    "rootDir": "C:/Users/rleel/OneDrive/Desktop/Triage_Engine/triage_engine",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 4
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "C:/Users/rleel/OneDrive/Desktop/Triage_Engine/triage_engine/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Users/rleel/OneDrive/Desktop/Triage_Engine/triage_engine",
+        "testIgnore": [],
+        "testMatch": [
+          "*.spec.js"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.57.0",
+    "workers": 4,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "tests\\checkout.spec.js",
+      "file": "tests/checkout.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Checkout",
+          "file": "tests/checkout.spec.js",
+          "line": 6,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should fail - cart total text mismatch",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 10559,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cart-total-amount')\nExpected: \u001b[32m\"$99.99\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cart-total-amount')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cart-total-amount')\nExpected: \u001b[32m\"$99.99\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cart-total-amount')\u001b[22m\n\n    at C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\checkout.spec.js:10:58",
+                        "location": {
+                          "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\checkout.spec.js",
+                          "column": 58,
+                          "line": 10
+                        },
+                        "snippet": "\u001b[0m \u001b[90m  8 |\u001b[39m     test(\u001b[32m'should fail - cart total text mismatch'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m  9 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'https://example.com'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 10 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'.cart-total-amount'\u001b[39m))\u001b[33m.\u001b[39mtoHaveText(\u001b[32m'$99.99'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 11 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 12 |\u001b[39m\n \u001b[90m 13 |\u001b[39m     test(\u001b[32m'should fail - checkout button disabled'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\checkout.spec.js",
+                            "column": 58,
+                            "line": 10
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.cart-total-amount')\nExpected: \u001b[32m\"$99.99\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.cart-total-amount')\u001b[22m\n\n\n   8 |     test('should fail - cart total text mismatch', async ({ page }) => {\n   9 |         await page.goto('https://example.com');\n> 10 |         await expect(page.locator('.cart-total-amount')).toHaveText('$99.99');\n     |                                                          ^\n  11 |     });\n  12 |\n  13 |     test('should fail - checkout button disabled', async ({ page }) => {\n    at C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\checkout.spec.js:10:58"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-02-01T16:34:17.026Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-checkout-Checkout-sh-26db4----cart-total-text-mismatch-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-checkout-Checkout-sh-26db4----cart-total-text-mismatch-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-checkout-Checkout-sh-26db4----cart-total-text-mismatch-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\checkout.spec.js",
+                        "column": 58,
+                        "line": 10
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "8db289ad95c911341d6c-4d69de938141b7f34c82",
+              "file": "tests/checkout.spec.js",
+              "line": 8,
+              "column": 5
+            },
+            {
+              "title": "should fail - checkout button disabled",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 7277,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#checkout-proceed-button')\nExpected: enabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#checkout-proceed-button')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#checkout-proceed-button')\nExpected: enabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#checkout-proceed-button')\u001b[22m\n\n    at C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\checkout.spec.js:15:64",
+                        "location": {
+                          "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\checkout.spec.js",
+                          "column": 64,
+                          "line": 15
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 13 |\u001b[39m     test(\u001b[32m'should fail - checkout button disabled'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 14 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'https://example.com'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 15 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'#checkout-proceed-button'\u001b[39m))\u001b[33m.\u001b[39mtoBeEnabled()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 16 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 17 |\u001b[39m\n \u001b[90m 18 |\u001b[39m })\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\checkout.spec.js",
+                            "column": 64,
+                            "line": 15
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#checkout-proceed-button')\nExpected: enabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#checkout-proceed-button')\u001b[22m\n\n\n  13 |     test('should fail - checkout button disabled', async ({ page }) => {\n  14 |         await page.goto('https://example.com');\n> 15 |         await expect(page.locator('#checkout-proceed-button')).toBeEnabled();\n     |                                                                ^\n  16 |     });\n  17 |\n  18 | });\n    at C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\checkout.spec.js:15:64"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-02-01T16:34:40.720Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-checkout-Checkout-sh-a17e8----checkout-button-disabled-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-checkout-Checkout-sh-a17e8----checkout-button-disabled-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-checkout-Checkout-sh-a17e8----checkout-button-disabled-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\checkout.spec.js",
+                        "column": 64,
+                        "line": 15
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "8db289ad95c911341d6c-d221a778c8dad2bbcf80",
+              "file": "tests/checkout.spec.js",
+              "line": 13,
+              "column": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tests\\login.spec.js",
+      "file": "tests/login.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Login",
+          "file": "tests/login.spec.js",
+          "line": 6,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should fail - incorrect page title",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 11087,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveTitle\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected: \u001b[32m\"\u001b[7mLogin Portal - \u001b[27mExample \u001b[7mApp\u001b[27m\"\u001b[39m\nReceived: \u001b[31m\"Example \u001b[7mDomain\u001b[27m\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveTitle\" with timeout 5000ms\u001b[22m\n\u001b[2m    8 ├ù unexpected value \"Example Domain\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveTitle\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected: \u001b[32m\"\u001b[7mLogin Portal - \u001b[27mExample \u001b[7mApp\u001b[27m\"\u001b[39m\nReceived: \u001b[31m\"Example \u001b[7mDomain\u001b[27m\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveTitle\" with timeout 5000ms\u001b[22m\n\u001b[2m    8 ├ù unexpected value \"Example Domain\"\u001b[22m\n\n    at C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\login.spec.js:10:28",
+                        "location": {
+                          "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\login.spec.js",
+                          "column": 28,
+                          "line": 10
+                        },
+                        "snippet": "\u001b[0m \u001b[90m  8 |\u001b[39m     test(\u001b[32m'should fail - incorrect page title'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m  9 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'https://example.com'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 10 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveTitle(\u001b[32m'Login Portal - Example App'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 11 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 12 |\u001b[39m\n \u001b[90m 13 |\u001b[39m     test(\u001b[32m'should fail - login button not visible'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\login.spec.js",
+                            "column": 28,
+                            "line": 10
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveTitle\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected: \u001b[32m\"\u001b[7mLogin Portal - \u001b[27mExample \u001b[7mApp\u001b[27m\"\u001b[39m\nReceived: \u001b[31m\"Example \u001b[7mDomain\u001b[27m\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveTitle\" with timeout 5000ms\u001b[22m\n\u001b[2m    8 ├ù unexpected value \"Example Domain\"\u001b[22m\n\n\n   8 |     test('should fail - incorrect page title', async ({ page }) => {\n   9 |         await page.goto('https://example.com');\n> 10 |         await expect(page).toHaveTitle('Login Portal - Example App');\n     |                            ^\n  11 |     });\n  12 |\n  13 |     test('should fail - login button not visible', async ({ page }) => {\n    at C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\login.spec.js:10:28"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-02-01T16:34:16.995Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-login-Login-should-fail---incorrect-page-title-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-login-Login-should-fail---incorrect-page-title-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-login-Login-should-fail---incorrect-page-title-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\login.spec.js",
+                        "column": 28,
+                        "line": 10
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "1b71af24692d2ed6cb3f-5800600fb6f42d49a030",
+              "file": "tests/login.spec.js",
+              "line": 8,
+              "column": 5
+            },
+            {
+              "title": "should fail - login button not visible",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 7458,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#submit-login-button')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#submit-login-button')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#submit-login-button')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#submit-login-button')\u001b[22m\n\n    at C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\login.spec.js:15:60",
+                        "location": {
+                          "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\login.spec.js",
+                          "column": 60,
+                          "line": 15
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 13 |\u001b[39m     test(\u001b[32m'should fail - login button not visible'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 14 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'https://example.com'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 15 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'#submit-login-button'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 16 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 17 |\u001b[39m\n \u001b[90m 18 |\u001b[39m     test(\u001b[32m'should fail with invalid password'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\login.spec.js",
+                            "column": 60,
+                            "line": 15
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#submit-login-button')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#submit-login-button')\u001b[22m\n\n\n  13 |     test('should fail - login button not visible', async ({ page }) => {\n  14 |         await page.goto('https://example.com');\n> 15 |         await expect(page.locator('#submit-login-button')).toBeVisible();\n     |                                                            ^\n  16 |     });\n  17 |\n  18 |     test('should fail with invalid password', async ({ page }) => {\n    at C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\login.spec.js:15:60"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-02-01T16:34:40.742Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-login-Login-should-fail---login-button-not-visible-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-login-Login-should-fail---login-button-not-visible-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-login-Login-should-fail---login-button-not-visible-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\login.spec.js",
+                        "column": 60,
+                        "line": 15
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "1b71af24692d2ed6cb3f-9a7bb3af9fc5f15bc59f",
+              "file": "tests/login.spec.js",
+              "line": 13,
+              "column": 5
+            },
+            {
+              "title": "should fail with invalid password",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 6464,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#error-message')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#error-message')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#error-message')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#error-message')\u001b[22m\n\n    at C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\login.spec.js:20:54",
+                        "location": {
+                          "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\login.spec.js",
+                          "column": 54,
+                          "line": 20
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 18 |\u001b[39m     test(\u001b[32m'should fail with invalid password'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 19 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'https://example.com'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 20 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'#error-message'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 21 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 22 |\u001b[39m\n \u001b[90m 23 |\u001b[39m })\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\login.spec.js",
+                            "column": 54,
+                            "line": 20
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#error-message')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#error-message')\u001b[22m\n\n\n  18 |     test('should fail with invalid password', async ({ page }) => {\n  19 |         await page.goto('https://example.com');\n> 20 |         await expect(page.locator('#error-message')).toBeVisible();\n     |                                                      ^\n  21 |     });\n  22 |\n  23 | });\n    at C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\login.spec.js:20:54"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-02-01T16:34:53.090Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-login-Login-should-fail-with-invalid-password-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-login-Login-should-fail-with-invalid-password-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-login-Login-should-fail-with-invalid-password-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\login.spec.js",
+                        "column": 54,
+                        "line": 20
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "1b71af24692d2ed6cb3f-11ab0fa29d0134d075d5",
+              "file": "tests/login.spec.js",
+              "line": 18,
+              "column": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tests\\navigation.spec.js",
+      "file": "tests/navigation.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Navigation",
+          "file": "tests/navigation.spec.js",
+          "line": 6,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should fail - menu not visible",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 10976,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.main-navigation-menu')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.main-navigation-menu')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.main-navigation-menu')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.main-navigation-menu')\u001b[22m\n\n    at C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\navigation.spec.js:10:61",
+                        "location": {
+                          "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\navigation.spec.js",
+                          "column": 61,
+                          "line": 10
+                        },
+                        "snippet": "\u001b[0m \u001b[90m  8 |\u001b[39m     test(\u001b[32m'should fail - menu not visible'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m  9 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'https://example.com'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 10 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'.main-navigation-menu'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 11 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 12 |\u001b[39m\n \u001b[90m 13 |\u001b[39m     test(\u001b[32m'should fail - footer links count'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\navigation.spec.js",
+                            "column": 61,
+                            "line": 10
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.main-navigation-menu')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.main-navigation-menu')\u001b[22m\n\n\n   8 |     test('should fail - menu not visible', async ({ page }) => {\n   9 |         await page.goto('https://example.com');\n> 10 |         await expect(page.locator('.main-navigation-menu')).toBeVisible();\n     |                                                             ^\n  11 |     });\n  12 |\n  13 |     test('should fail - footer links count', async ({ page }) => {\n    at C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\navigation.spec.js:10:61"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-02-01T16:34:17.066Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-navigation-Navigation-should-fail---menu-not-visible-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-navigation-Navigation-should-fail---menu-not-visible-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-navigation-Navigation-should-fail---menu-not-visible-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\navigation.spec.js",
+                        "column": 61,
+                        "line": 10
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "fd9b26343428720d0f08-e6cf12b96c828fbaa331",
+              "file": "tests/navigation.spec.js",
+              "line": 8,
+              "column": 5
+            },
+            {
+              "title": "should fail - footer links count",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 8018,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('footer a')\nExpected: \u001b[32m15\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('footer a')\u001b[22m\n\u001b[2m    8 ├ù locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('footer a')\nExpected: \u001b[32m15\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('footer a')\u001b[22m\n\u001b[2m    8 ├ù locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\n    at C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\navigation.spec.js:15:48",
+                        "location": {
+                          "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\navigation.spec.js",
+                          "column": 48,
+                          "line": 15
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 13 |\u001b[39m     test(\u001b[32m'should fail - footer links count'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 14 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'https://example.com'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 15 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'footer a'\u001b[39m))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m15\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 16 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 17 |\u001b[39m\n \u001b[90m 18 |\u001b[39m })\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\navigation.spec.js",
+                            "column": 48,
+                            "line": 15
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('footer a')\nExpected: \u001b[32m15\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('footer a')\u001b[22m\n\u001b[2m    8 ├ù locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\n\n  13 |     test('should fail - footer links count', async ({ page }) => {\n  14 |         await page.goto('https://example.com');\n> 15 |         await expect(page.locator('footer a')).toHaveCount(15);\n     |                                                ^\n  16 |     });\n  17 |\n  18 | });\n    at C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\navigation.spec.js:15:48"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-02-01T16:34:40.917Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-navigation-Navigation-should-fail---footer-links-count-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-navigation-Navigation-should-fail---footer-links-count-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-navigation-Navigation-should-fail---footer-links-count-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\navigation.spec.js",
+                        "column": 48,
+                        "line": 15
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "fd9b26343428720d0f08-b1052c988b9db2151b16",
+              "file": "tests/navigation.spec.js",
+              "line": 13,
+              "column": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tests\\profile.spec.js",
+      "file": "tests/profile.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Profile",
+          "file": "tests/profile.spec.js",
+          "line": 6,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should fail - profile picture not visible",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 10800,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.user-profile-picture')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.user-profile-picture')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.user-profile-picture')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.user-profile-picture')\u001b[22m\n\n    at C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\profile.spec.js:10:61",
+                        "location": {
+                          "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\profile.spec.js",
+                          "column": 61,
+                          "line": 10
+                        },
+                        "snippet": "\u001b[0m \u001b[90m  8 |\u001b[39m     test(\u001b[32m'should fail - profile picture not visible'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m  9 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'https://example.com'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 10 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'.user-profile-picture'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 11 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 12 |\u001b[39m\n \u001b[90m 13 |\u001b[39m     test(\u001b[32m'should fail - settings page title'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\profile.spec.js",
+                            "column": 61,
+                            "line": 10
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.user-profile-picture')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.user-profile-picture')\u001b[22m\n\n\n   8 |     test('should fail - profile picture not visible', async ({ page }) => {\n   9 |         await page.goto('https://example.com');\n> 10 |         await expect(page.locator('.user-profile-picture')).toBeVisible();\n     |                                                             ^\n  11 |     });\n  12 |\n  13 |     test('should fail - settings page title', async ({ page }) => {\n    at C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\profile.spec.js:10:61"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-02-01T16:34:17.050Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-profile-Profile-shou-99659-profile-picture-not-visible-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-profile-Profile-shou-99659-profile-picture-not-visible-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-profile-Profile-shou-99659-profile-picture-not-visible-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\profile.spec.js",
+                        "column": 61,
+                        "line": 10
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "a8647b00c872e5f1e2df-f5e2cd53a4c8dae91886",
+              "file": "tests/profile.spec.js",
+              "line": 8,
+              "column": 5
+            },
+            {
+              "title": "should fail - settings page title",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 8619,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveTitle\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected: \u001b[32m\"Account Settings - User Profile\"\u001b[39m\nReceived: \u001b[31m\"Example Domain\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveTitle\" with timeout 5000ms\u001b[22m\n\u001b[2m    8 ├ù unexpected value \"Example Domain\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveTitle\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected: \u001b[32m\"Account Settings - User Profile\"\u001b[39m\nReceived: \u001b[31m\"Example Domain\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveTitle\" with timeout 5000ms\u001b[22m\n\u001b[2m    8 ├ù unexpected value \"Example Domain\"\u001b[22m\n\n    at C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\profile.spec.js:15:28",
+                        "location": {
+                          "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\profile.spec.js",
+                          "column": 28,
+                          "line": 15
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 13 |\u001b[39m     test(\u001b[32m'should fail - settings page title'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 14 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'https://example.com'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 15 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveTitle(\u001b[32m'Account Settings - User Profile'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 16 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 17 |\u001b[39m\n \u001b[90m 18 |\u001b[39m })\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\profile.spec.js",
+                            "column": 28,
+                            "line": 15
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveTitle\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected: \u001b[32m\"Account Settings - User Profile\"\u001b[39m\nReceived: \u001b[31m\"Example Domain\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveTitle\" with timeout 5000ms\u001b[22m\n\u001b[2m    8 ├ù unexpected value \"Example Domain\"\u001b[22m\n\n\n  13 |     test('should fail - settings page title', async ({ page }) => {\n  14 |         await page.goto('https://example.com');\n> 15 |         await expect(page).toHaveTitle('Account Settings - User Profile');\n     |                            ^\n  16 |     });\n  17 |\n  18 | });\n    at C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\profile.spec.js:15:28"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-02-01T16:34:40.897Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-profile-Profile-should-fail---settings-page-title-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-profile-Profile-should-fail---settings-page-title-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-profile-Profile-should-fail---settings-page-title-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\profile.spec.js",
+                        "column": 28,
+                        "line": 15
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "a8647b00c872e5f1e2df-e56c04cac77127d3f99f",
+              "file": "tests/profile.spec.js",
+              "line": 13,
+              "column": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tests\\search.spec.js",
+      "file": "tests/search.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Search",
+          "file": "tests/search.spec.js",
+          "line": 6,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should fail - search results URL mismatch",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 6413,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected: \u001b[32m\"https://example.com/\u001b[7msearch?q=laptop\u001b[27m\"\u001b[39m\nReceived: \u001b[31m\"https://example.com/\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    8 ├ù unexpected value \"https://example.com/\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected: \u001b[32m\"https://example.com/\u001b[7msearch?q=laptop\u001b[27m\"\u001b[39m\nReceived: \u001b[31m\"https://example.com/\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    8 ├ù unexpected value \"https://example.com/\"\u001b[22m\n\n    at C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\search.spec.js:10:28",
+                        "location": {
+                          "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\search.spec.js",
+                          "column": 28,
+                          "line": 10
+                        },
+                        "snippet": "\u001b[0m \u001b[90m  8 |\u001b[39m     test(\u001b[32m'should fail - search results URL mismatch'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m  9 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'https://example.com'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 10 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[32m'https://example.com/search?q=laptop'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 11 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 12 |\u001b[39m\n \u001b[90m 13 |\u001b[39m     test(\u001b[32m'should fail - result count mismatch'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\search.spec.js",
+                            "column": 28,
+                            "line": 10
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected: \u001b[32m\"https://example.com/\u001b[7msearch?q=laptop\u001b[27m\"\u001b[39m\nReceived: \u001b[31m\"https://example.com/\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m    8 ├ù unexpected value \"https://example.com/\"\u001b[22m\n\n\n   8 |     test('should fail - search results URL mismatch', async ({ page }) => {\n   9 |         await page.goto('https://example.com');\n> 10 |         await expect(page).toHaveURL('https://example.com/search?q=laptop');\n     |                            ^\n  11 |     });\n  12 |\n  13 |     test('should fail - result count mismatch', async ({ page }) => {\n    at C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\search.spec.js:10:28"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-02-01T16:34:53.366Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-search-Search-should-48971-search-results-URL-mismatch-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-search-Search-should-48971-search-results-URL-mismatch-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-search-Search-should-48971-search-results-URL-mismatch-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\search.spec.js",
+                        "column": 28,
+                        "line": 10
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d53ffa5463856ea7b299-bbeab560228ab32890d5",
+              "file": "tests/search.spec.js",
+              "line": 8,
+              "column": 5
+            },
+            {
+              "title": "should fail - result count mismatch",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 6444,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.search-result-item')\nExpected: \u001b[32m10\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.search-result-item')\u001b[22m\n\u001b[2m    9 ├ù locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.search-result-item')\nExpected: \u001b[32m10\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.search-result-item')\u001b[22m\n\u001b[2m    9 ├ù locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\n    at C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\search.spec.js:15:59",
+                        "location": {
+                          "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\search.spec.js",
+                          "column": 59,
+                          "line": 15
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 13 |\u001b[39m     test(\u001b[32m'should fail - result count mismatch'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 14 |\u001b[39m         \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'https://example.com'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 15 |\u001b[39m         \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'.search-result-item'\u001b[39m))\u001b[33m.\u001b[39mtoHaveCount(\u001b[35m10\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 16 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 17 |\u001b[39m\n \u001b[90m 18 |\u001b[39m })\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\search.spec.js",
+                            "column": 59,
+                            "line": 15
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.search-result-item')\nExpected: \u001b[32m10\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.search-result-item')\u001b[22m\n\u001b[2m    9 ├ù locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\n\n  13 |     test('should fail - result count mismatch', async ({ page }) => {\n  14 |         await page.goto('https://example.com');\n> 15 |         await expect(page.locator('.search-result-item')).toHaveCount(10);\n     |                                                           ^\n  16 |     });\n  17 |\n  18 | });\n    at C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\search.spec.js:15:59"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-02-01T16:35:03.524Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-search-Search-should-fail---result-count-mismatch-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-search-Search-should-fail---result-count-mismatch-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\test-results\\tests-search-Search-should-fail---result-count-mismatch-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\rleel\\OneDrive\\Desktop\\Triage_Engine\\triage_engine\\tests\\search.spec.js",
+                        "column": 59,
+                        "line": 15
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "d53ffa5463856ea7b299-e645297b4173d02f60e8",
+              "file": "tests/search.spec.js",
+              "line": 13,
+              "column": 5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-02-01T16:34:10.557Z",
+    "duration": 60560.565,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 11,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Case Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: #666;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .upload-area {
+            border: 3px dashed #667eea;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            background: #f8f9ff;
+        }
+
+        .upload-area:hover {
+            border-color: #764ba2;
+            background: #f0f2ff;
+        }
+
+        .upload-area.dragover {
+            border-color: #764ba2;
+            background: #e8ebff;
+            transform: scale(1.02);
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        input[type="file"] {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .file-label {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #667eea;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .file-label:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .file-name {
+            margin-top: 15px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .file-name span {
+            color: #667eea;
+        }
+
+        .generate-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .generate-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .generate-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .status.show {
+            display: block;
+        }
+
+        .results {
+            margin-top: 30px;
+            display: none;
+        }
+
+        .results.show {
+            display: block;
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .results-title {
+            font-size: 1.5em;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .test-count {
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .test-cases {
+            max-height: 500px;
+            overflow-y: auto;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .test-case {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        .test-case-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .test-case-id {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .test-case-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .test-case-detail {
+            margin: 5px 0;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .test-case-detail strong {
+            color: #333;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .api-config {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            font-size: 0.9em;
+        }
+
+        .api-config input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+
+        .api-config label {
+            display: block;
+            margin-bottom: 10px;
+            color: #666;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Test Case Generator</h1>
+        <p class="subtitle">Upload your locators JSON file to generate test cases</p>
+
+        <div class="api-config">
+            <label>
+                API Base URL:
+                <input type="text" id="apiUrl" placeholder="http://192.168.1.61:8001">
+            </label>
+        </div>
+
+        <div class="upload-area" id="uploadArea">
+            <div class="file-input-wrapper">
+                <input type="file" id="fileInput" accept=".json" />
+                <label for="fileInput" class="file-label">📁 Choose JSON File</label>
+            </div>
+            <p class="file-name" id="fileName" style="display: none;">
+                Selected: <span id="fileNameText"></span>
+            </p>
+        </div>
+
+        <button class="generate-btn" id="generateBtn" disabled>
+            🚀 Generate Test Cases
+        </button>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p style="margin-top: 10px; color: #666;">Generating test cases... This may take a minute.</p>
+        </div>
+
+        <div class="status" id="status"></div>
+
+        <div class="results" id="results">
+            <div class="results-header">
+                <h2 class="results-title">Generated Test Cases</h2>
+                <span class="test-count" id="testCount">0</span>
+            </div>
+            <div class="test-cases" id="testCases"></div>
+        </div>
+    </div>
+
+    <script>
+        // Auto-detect API URL from current page URL
+        function getDefaultApiUrl() {
+            const protocol = window.location.protocol; // http: or https:
+            const hostname = window.location.hostname; // IP address or domain
+            const port = window.location.port; // Port number (e.g., 8001)
+            // Always include port if it exists (for development server on 8001)
+            const portPart = port ? `:${port}` : '';
+            return `${protocol}//${hostname}${portPart}`;
+        }
+
+        // API Configuration
+        const GENERATE_ENDPOINT = '/api/v1/generate-testcases';
+        const COUNT_ENDPOINT = '/api/v1/testcases/count';
+
+        // DOM Elements
+        const fileInput = document.getElementById('fileInput');
+        const uploadArea = document.getElementById('uploadArea');
+        const fileName = document.getElementById('fileName');
+        const fileNameText = document.getElementById('fileNameText');
+        const generateBtn = document.getElementById('generateBtn');
+        const loading = document.getElementById('loading');
+        const status = document.getElementById('status');
+        const results = document.getElementById('results');
+        const testCases = document.getElementById('testCases');
+        const testCount = document.getElementById('testCount');
+        const apiUrlInput = document.getElementById('apiUrl');
+
+        // Set default API URL based on current page URL
+        const defaultApiUrl = getDefaultApiUrl();
+        apiUrlInput.value = defaultApiUrl;
+        apiUrlInput.placeholder = defaultApiUrl;
+
+        let selectedFile = null;
+
+        // Update API URL when changed
+        apiUrlInput.addEventListener('change', function() {
+            updateApiUrl(this.value);
+        });
+
+        function updateApiUrl(url) {
+            // Remove trailing slash
+            return url.replace(/\/$/, '');
+        }
+
+        function getApiUrl() {
+            return updateApiUrl(apiUrlInput.value);
+        }
+
+        // File input change
+        fileInput.addEventListener('change', function(e) {
+            handleFileSelect(e.target.files[0]);
+        });
+
+        // Drag and drop
+        uploadArea.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', function(e) {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            const file = e.dataTransfer.files[0];
+            if (file && file.name.endsWith('.json')) {
+                handleFileSelect(file);
+                fileInput.files = e.dataTransfer.files;
+            } else {
+                showStatus('Please select a JSON file', 'error');
+            }
+        });
+
+        function handleFileSelect(file) {
+            if (!file) return;
+            
+            if (!file.name.endsWith('.json')) {
+                showStatus('Please select a JSON file (.json)', 'error');
+                return;
+            }
+
+            selectedFile = file;
+            fileNameText.textContent = file.name;
+            fileName.style.display = 'block';
+            generateBtn.disabled = false;
+            hideStatus();
+            hideResults();
+        }
+
+        // Generate button click
+        generateBtn.addEventListener('click', async function() {
+            if (!selectedFile) {
+                showStatus('Please select a JSON file first', 'error');
+                return;
+            }
+
+            await generateTestCases();
+        });
+
+        async function generateTestCases() {
+            const formData = new FormData();
+            formData.append('file', selectedFile);
+
+            // Show loading
+            generateBtn.disabled = true;
+            loading.classList.add('show');
+            hideStatus();
+            hideResults();
+
+            try {
+                const apiUrl = getApiUrl();
+                const response = await fetch(`${apiUrl}${GENERATE_ENDPOINT}`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                // Check if response is ok before parsing JSON
+                let data;
+                try {
+                    data = await response.json();
+                } catch (jsonError) {
+                    // If response is not JSON, handle it
+                    if (!response.ok) {
+                        throw new Error(`Server error: ${response.status} ${response.statusText}`);
+                    }
+                    throw new Error('Invalid response format from server');
+                }
+
+                if (!response.ok) {
+                    // Handle error responses
+                    const errorMessage = data.detail || data.error || `Server error: ${response.status}`;
+                    throw new Error(errorMessage);
+                }
+
+                // Validate response structure
+                if (data.testCaseCount === undefined || typeof data.testCaseCount !== 'number') {
+                    throw new Error('Invalid response: testCaseCount not found');
+                }
+
+                // Success
+                showStatus(`Successfully generated ${data.testCaseCount} test cases!`, 'success');
+                
+                // Update count
+                await updateTestCount();
+                
+                // Optionally fetch full test cases if needed
+                // await fetchAndDisplayTestCases();
+
+            } catch (error) {
+                console.error('Error:', error);
+                // Handle network errors
+                if (error instanceof TypeError && error.message.includes('fetch')) {
+                    showStatus('Error: Cannot connect to server. Please check if the API is running and the URL is correct.', 'error');
+                } else {
+                    showStatus(`Error: ${error.message}`, 'error');
+                }
+            } finally {
+                generateBtn.disabled = false;
+                loading.classList.remove('show');
+            }
+        }
+
+        async function updateTestCount() {
+            try {
+                const apiUrl = getApiUrl();
+                const response = await fetch(`${apiUrl}${COUNT_ENDPOINT}`);
+                
+                if (!response.ok) {
+                    console.warn('Failed to fetch test case count:', response.status);
+                    return;
+                }
+                
+                let data;
+                try {
+                    data = await response.json();
+                } catch (jsonError) {
+                    console.warn('Invalid JSON response from count endpoint');
+                    return;
+                }
+                
+                if (data.testCaseCount !== undefined) {
+                    // Count is already shown in results, but we could update a separate counter
+                    console.log('Test case count:', data.testCaseCount);
+                }
+            } catch (error) {
+                // Silently fail - count is optional
+                console.debug('Error fetching count:', error);
+            }
+        }
+
+        function displayTestCases(testCasesArray) {
+            testCount.textContent = `${testCasesArray.length} Test Cases`;
+            testCases.innerHTML = '';
+
+            testCasesArray.forEach((testCase, index) => {
+                const testCaseDiv = document.createElement('div');
+                testCaseDiv.className = 'test-case';
+                
+                testCaseDiv.innerHTML = `
+                    <div class="test-case-header">
+                        <span class="test-case-id">${testCase.id || `TC-${index + 1}`}</span>
+                    </div>
+                    <div class="test-case-title">${testCase.title || 'Untitled Test Case'}</div>
+                    <div class="test-case-detail"><strong>Module:</strong> ${testCase.module || 'N/A'}</div>
+                    <div class="test-case-detail"><strong>Function:</strong> ${testCase.function || 'N/A'}</div>
+                    ${testCase.preconditions ? `<div class="test-case-detail"><strong>Preconditions:</strong> ${testCase.preconditions}</div>` : ''}
+                    <div class="test-case-detail"><strong>Steps:</strong> ${testCase.steps ? testCase.steps.length : 0} steps</div>
+                    <div class="test-case-detail"><strong>Expected:</strong> ${testCase.expected ? testCase.expected.length : 0} assertions</div>
+                `;
+                
+                testCases.appendChild(testCaseDiv);
+            });
+
+            results.classList.add('show');
+        }
+
+        function showStatus(message, type) {
+            status.textContent = message;
+            status.className = `status ${type} show`;
+        }
+
+        function hideStatus() {
+            status.classList.remove('show');
+        }
+
+        function hideResults() {
+            results.classList.remove('show');
+        }
+    </script>
+</body>
+</html>
+

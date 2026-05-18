@@ -1,0 +1,14 @@
+{
+    "name": "bug-triage-engine",
+    "version": "1.0.0",
+    "description": "Bug triage engine with Playwright integration",
+    "scripts": {
+        "test": "playwright test",
+        "test:demo": "playwright test demo.spec.js",
+        "test:report": "playwright test --reporter=json",
+        "triage": "playwright test demo.spec.js && python run_playwright_and_triage.py"
+    },
+    "devDependencies": {
+        "@playwright/test": "^1.57.0"
+    }
+}

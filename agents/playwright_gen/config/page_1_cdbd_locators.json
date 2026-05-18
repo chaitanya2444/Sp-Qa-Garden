@@ -1,0 +1,19 @@
+{
+  "WELCOME_BACKEMAIL_PASSWORD": "page.locator('html')",
+  "WELCOME_BACKEMAIL_PASSWORD_0_0": "page.locator('body')",
+  "HEADING_WELCOME_BACK": "page.locator('h2.welcome-text')",
+  "EMAIL_PASSWORD_FORGOT_PASS": "page.locator('div.form-wrapper')",
+  "EMAIL_PASSWORD_FORGOT_PASS_473_270": "page.locator('form.login-form')",
+  "EMAIL": "page.locator('div.form-group')",
+  "": "page.locator('span')",
+  "INPUT_EMAIL_483_296": "page.locator('#login-email')",
+  "PASSWORD": "page.locator('div.form-group')",
+  "558_357": "page.locator('span')",
+  "FORGOT_PASSWORD": "page.locator('div.form-footer')",
+  "LINK_FORGOT_PASSWORD_696_449": "page.locator('a.forgot-link')",
+  "BTN_LOGIN": "page.locator('button.login-button')",
+  "OR": "page.locator('div.or-text')",
+  "DONT_HAVE_AN_ACCOUNT": "page.locator('div.signup-link')",
+  "SIGN_UP_HERE": "page.locator('span.signup-highlight')",
+  "LINK_SIGN_UP_HERE_592_685": "page.locator('a')"
+}

@@ -1,0 +1,85 @@
+1. SYNC API USAGE (MANDATORY):
+   - You MUST use the Playwright SYNC API (`playwright.sync_api`).
+   - NEVER use the `await` keyword. This is synchronous code.
+   - Example CORRECT: page.goto(URL)
+   - Example WRONG: await page.goto(URL)
+
+TASK:
+Generate clean, executable Playwright pytest tests by converting JSON test cases into individual test functions.
+
+CRITICAL RULES (MANDATORY):
+
+1. FIXTURE USAGE:
+   - NEVER define @pytest.fixture in test files
+   - conftest.py already provides browser, context, page fixtures
+   - Use only: def test_function_name(page):
+   - NEVER use: with sync_playwright() as p:
+
+2. LOCATOR USAGE (CRITICAL):
+   - Locators MUST use the EXACT constant names defined in the provided LOCATORS FILE CONTENT.
+   - DO NOT HALLUCINATE OR GUESS LOCATOR NAMES.
+   - ALWAYS wrap with page.locator(): page.locator(LOCATOR_CLASS.CONSTANT_NAME)
+   - For visibility: expect(page.locator(LOCATOR_CLASS.CONSTANT_NAME)).to_be_visible()
+   - For interactions: page.locator(LOCATOR_CLASS.CONSTANT_NAME).fill('text')
+   - NEVER use: LOCATOR_CLASS.CONSTANT_NAME.is_visible() (this will fail)
+
+3. JSON TESTCASES USAGE (CRITICAL):
+   - JSON testcases contain specific inputs for each test
+   - USE the actual input values from each test case
+   - DO NOT use hardcoded values - use the provided inputs
+   - Each test function should use its specific test case inputs
+   - Convert each JSON test case into a separate test function with its inputs
+   - NO runtime JSON loading
+
+4. TEST STRUCTURE & FIXTURE USAGE (CRITICAL):
+   - One test function per JSON test case
+   - Function names based on test case ID: test_page_valid_credentials, test_page_empty_email, etc.
+   - FIXTURE RULES:
+     * Simple pages: def test_function(page): + page.goto(URL_VARIABLE)
+     * Auth pages: def test_function(authenticated_page): + authenticated_page.goto(URL_VARIABLE, timeout=60000)
+   - Use specific inputs from each test case
+
+5. IMPORTS:
+   - from config.urls import URL_VARIABLE
+   - from config.[page]_locators import LOCATOR_CLASS
+   - from playwright.sync_api import expect
+
+6. ASSERTIONS (CRITICAL):
+   - For URL checks: expect(page).to_have_url(URL_VARIABLE)
+   - For visibility: expect(page.locator(LOCATOR_CLASS.CONSTANT)).to_be_visible(timeout=10000)
+   - NEVER use: expect(page.url).to_equal(...) or expect(page.url) == ...
+
+7. OUTPUT FORMAT:
+   - Output ONLY valid Python code
+   - No explanations, markdown, or ``` fences
+   - Start with imports
+   - Each JSON test case = one test function using its specific inputs
+   - NO JSON loading code
+
+FORBIDDEN PATTERNS:
+- @pytest.fixture definitions
+- sync_playwright() usage
+- json.load() calls
+- exec() statements
+- @pytest.mark.parametrize
+- Runtime JSON loading
+- Hardcoded values when test case inputs are provided
+- Using page fixture for welcome tests (MUST use authenticated_page)
+- Welcome tests without authenticated_page.goto(WELCOME_URL, timeout=60000)
+
+STATIC WEBSITE HANDLING:
+- This is a static website hosted on S3/CloudFront
+- Login forms don't actually submit to backend
+- No real authentication or navigation after login
+- Tests should verify UI elements and form validation only
+- Don't expect URL changes after form submission
+- Use longer timeouts for element loading: timeout=10000
+- For invalid credentials: check that page stays on login URL
+- For successful login: check form submission attempt, not navigation
+
+TIMEOUT HANDLING:
+- Use page.goto(url, timeout=60000) for slow loading - NEVER duplicate timeout parameters
+- Use expect().to_be_visible(timeout=10000) for elements
+- Add page.wait_for_load_state('networkidle') after navigation
+- CRITICAL: Each parameter should appear only once per function call
+- NEVER write: page.goto(url, timeout=60000, timeout=60000)
