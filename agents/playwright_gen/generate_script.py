@@ -28,14 +28,16 @@ OR_KEY = os.getenv("OPENROUTER_API_KEY")
 OR_MODEL = os.getenv("OPENROUTER_MODEL", "meta-llama/llama-3.1-405b-instruct") # Default to strong model
 OR_URL = os.getenv("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1")
 
-HF_KEY = os.getenv("HUGGINGFACE_API_KEY")
+# Use HUGGINGFACE_API_KEY, or fall back to HF_TOKEN auto-injected by Hugging Face Spaces
+HF_KEY = os.getenv("HUGGINGFACE_API_KEY") or os.getenv("HF_TOKEN")
 HF_MODEL = os.getenv("HUGGINGFACE_MODEL", "meta-llama/Meta-Llama-3.1-8B-Instruct")
 
 OLLAMA_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434/api/generate")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "llama3")
 
+# Warn but DO NOT crash if no keys found — HF Spaces injects HF_TOKEN automatically
 if not XAI_KEY and not GROQ_KEY and not OR_KEY and not HF_KEY and not GEMINI_KEY:
-    raise RuntimeError("No API keys found. Set GEMINI_API_KEY, XAI_API_KEY, GROQ_API_KEY, OPENROUTER_API_KEY, or HUGGINGFACE_API_KEY in .env")
+    logging.warning("No API keys found. Set GEMINI_API_KEY, GROQ_API_KEY, or HUGGINGFACE_API_KEY. Playwright generation may fail.")
 
 # Logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s | %(levelname)-8s | %(message)s')
@@ -76,11 +78,11 @@ def inject_pythonpath(code: str) -> str:
 # LLM INTEGRATION (MULTI-PROVIDER)
 # =========================
 # Groq Key Pool
-GROQ_KEYS = [
-    key.strip() 
-    for key in os.getenv("GROQ_API_KEYS", "").split(",") 
-    if key.strip() and "gsk_" in key
-]
+# Build Groq key pool: support both multi-key GROQ_API_KEYS and single GROQ_API_KEY
+_groq_raw = os.getenv("GROQ_API_KEYS", "")
+GROQ_KEYS = [key.strip() for key in _groq_raw.split(",") if key.strip() and "gsk_" in key]
+if GROQ_KEY and GROQ_KEY not in GROQ_KEYS:
+    GROQ_KEYS.append(GROQ_KEY)
 
 def call_llm(prompt: str) -> str:
     """Call LLM with Gemini -> Groq -> OpenRouter -> Ollama -> Hugging Face fallback with retries."""

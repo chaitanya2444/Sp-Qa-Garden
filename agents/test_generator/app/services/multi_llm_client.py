@@ -25,7 +25,7 @@ class LLMClient:
         self.or_key = settings.openrouter_api_key
         self.or_model = settings.openrouter_model
         
-        self.hf_key = settings.huggingface_api_key
+        self.hf_key = settings.effective_hf_key  # Picks up HF_TOKEN auto-injected by HF Spaces
         self.hf_model = settings.huggingface_model
         
         self.ollama_url = settings.ollama_base_url
@@ -92,7 +92,7 @@ class LLMClient:
                     app_logger.warning(f"Groq failed: {e}. Attempting next fallback...")
                     break
 
-        # 4. Try Ollama (Local)
+        # 4. Try Ollama (Local) — only if URL is configured and not empty
         if self.ollama_url:
             try:
                 return await self._call_ollama(full_prompt)

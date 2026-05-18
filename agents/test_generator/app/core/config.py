@@ -21,6 +21,7 @@ class Settings(BaseSettings):
     # Default includes user provided keys for robustness
     groq_api_keys: Optional[str] = None  # Comma-separated list for rotation (read from .env)
     huggingface_api_key: Optional[str] = None # Fallback
+    hf_token: Optional[str] = None            # Auto-injected by Hugging Face Spaces
     jira_api_key: Optional[str] = None
     
     # LLM Configuration
@@ -35,7 +36,8 @@ class Settings(BaseSettings):
     xai_base_url: str = "https://api.x.ai/v1"
     groq_base_url: str = "https://api.groq.com/openai/v1"
     openrouter_base_url: str = "https://openrouter.ai/api/v1"
-    ollama_base_url: str = "http://localhost:11434/api/generate"
+    # Set to empty string to disable Ollama attempts on cloud (localhost:11434 is unavailable on HF)
+    ollama_base_url: str = ""
     
     # Application Settings
     app_name: str = "Test Case Generator API"
@@ -80,6 +82,11 @@ class Settings(BaseSettings):
         """Get CORS headers as list."""
         return self._parse_list(self.cors_allow_headers)
     
+    @property
+    def effective_hf_key(self) -> Optional[str]:
+        """Get effective Hugging Face API key: prefer explicit key, fall back to HF_TOKEN."""
+        return self.huggingface_api_key or self.hf_token
+
     @property
     def groq_api_keys_list(self) -> list[str]:
         """Get Groq API keys as list for rotation, merging env and hardcoded defaults."""
