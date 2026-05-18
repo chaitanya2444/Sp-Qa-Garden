@@ -86,6 +86,7 @@ export default function NewRunPage() {
                     crawl_depth: finalDepth,
                     max_pages: finalPages,
                     auth_enabled: authEnabled,
+                    form_interactions: formInteractions,
                     failure_policy: {
                         onAgentFailure: failurePolicy,
                         maxRetries: maxRetries
