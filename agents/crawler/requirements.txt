@@ -7,4 +7,4 @@ requests
 beautifulsoup4
 python-dotenv
 psutil
-                                                                                                                                                                                                                                                                                                                                                                               
+websockets

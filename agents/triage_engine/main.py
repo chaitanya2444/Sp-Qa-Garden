@@ -1,4 +1,10 @@
 import os
+import sys
+
+# Register 'triage_app' as the 'app' module to resolve internal absolute imports
+import triage_app
+sys.modules['app'] = triage_app
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
