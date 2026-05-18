@@ -133,7 +133,7 @@ export function AgentCard({ type, data, isActive }: AgentCardProps) {
                                             <p className="text-[8px] uppercase font-bold text-muted-foreground/60">
                                                 {metric.label}
                                             </p>
-                                            <p className={cn("text-xs font-bold", metric.color || "text-primary")}>
+                                            <p className={cn("text-xs font-bold", (metric as any).color || "text-primary")}>
                                                 {metric.value}
                                             </p>
                                         </div>
