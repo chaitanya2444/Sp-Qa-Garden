@@ -261,6 +261,8 @@ def _call_huggingface(prompt: str) -> str:
     
     with httpx.Client(timeout=60) as client:
         response = client.post(api_url, headers=headers, json=payload)
+        if response.status_code != 200:
+            logger.error(f"Hugging Face API Error {response.status_code}: {response.text}")
         response.raise_for_status()
         result = response.json()
         

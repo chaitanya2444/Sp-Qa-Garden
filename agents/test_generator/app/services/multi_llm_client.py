@@ -222,7 +222,7 @@ class LLMClient:
         """Call Hugging Face Inference API via Router."""
         app_logger.info(f"Calling Hugging Face with model: {self.hf_model}")
         
-        hf_url = "https://router.huggingface.co/hf-inference"
+        hf_url = f"https://api-inference.huggingface.co/models/{self.hf_model}"
         headers = {"Authorization": f"Bearer {self.hf_key}"}
         
         # Payload for the Hugging Face Router
@@ -238,6 +238,8 @@ class LLMClient:
 
         async with httpx.AsyncClient(timeout=self.timeout) as client:
             response = await client.post(hf_url, headers=headers, json=payload)
+            if response.status_code != 200:
+                app_logger.error(f"Hugging Face API Error {response.status_code}: {response.text}")
             response.raise_for_status()
             result = response.json()
             
