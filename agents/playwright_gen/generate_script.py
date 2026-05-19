@@ -32,7 +32,8 @@ OR_URL = os.getenv("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1")
 HF_KEY = os.getenv("HUGGINGFACE_API_KEY") or os.getenv("HF_TOKEN")
 HF_MODEL = os.getenv("HUGGINGFACE_MODEL", "meta-llama/Meta-Llama-3.1-8B-Instruct")
 
-OLLAMA_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434/api/generate")
+# Only enable Ollama if explicitly configured (not available on cloud/HF Spaces)
+OLLAMA_URL = os.getenv("OLLAMA_BASE_URL", "")  # Empty = disabled by default on cloud
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "llama3")
 
 # Warn but DO NOT crash if no keys found — HF Spaces injects HF_TOKEN automatically
@@ -124,8 +125,8 @@ def call_llm(prompt: str) -> str:
                 except Exception as e:
                     logger.warning(f"OpenRouter failed (Attempt {attempt+1}/{max_retries}): {e}")
             
-            # 5. Try Ollama (Local)
-            if OLLAMA_URL:
+            # 5. Try Ollama (Local) — ONLY if explicitly configured via OLLAMA_BASE_URL env var
+            if OLLAMA_URL and OLLAMA_URL.strip():
                 try:
                     return _call_ollama(prompt)
                 except Exception as e:

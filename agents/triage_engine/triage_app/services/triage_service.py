@@ -189,8 +189,8 @@ Logs: {payload.logs}
                 print(msg)
                 errors.append(msg)
 
-        # 3. Try Ollama (Local) - Unlimited & Private
-        if not bug:
+        # 3. Try Ollama (Local) - ONLY if explicitly configured (skipped on cloud/HF Spaces)
+        if not bug and os.getenv("OLLAMA_BASE_URL", ""):
             try:
                 if payload.run_id:
                     await manager.broadcast(payload.run_id, {
