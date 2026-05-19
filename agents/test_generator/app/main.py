@@ -118,7 +118,12 @@ async def websocket_endpoint(websocket: WebSocket, run_id: str):
         app_logger.error(f"WebSocket error: {str(e)}")
     finally:
         await sse_manager.disconnect(queue)
-        await websocket.close()
+        try:
+            from starlette.websockets import WebSocketState
+            if websocket.client_state != WebSocketState.DISCONNECTED:
+                await websocket.close()
+        except Exception:
+            pass
 
 # Serve frontend static files
 import os

@@ -354,8 +354,8 @@ def run_generation_task(run_id: str):
 
             # --- TRIGGER CI/CD AGENT ---
             try:
-                # Use environment variable for CI/CD URL or fallback to localhost:8000/cicd (Nginx proxy)
-                cicd_endpoint = os.getenv("CICD_AGENT_URL", "http://localhost:8000/cicd")
+                # Use environment variable for CI/CD URL or fallback to localhost:8003 (direct port)
+                cicd_endpoint = os.getenv("CICD_AGENT_URL", "http://localhost:8003")
                 cicd_url = f"{cicd_endpoint}/generate/tests"
                 logger.info(f"Triggering CI/CD Agent at {cicd_url}...")
                 
