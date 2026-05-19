@@ -150,12 +150,17 @@ def call_llm(prompt: str) -> str:
     # 7. Zero-Key Dummy Fallback
     # Think out of the box! If there are literally no API keys, generate a valid dummy script 
     # so the pipeline completes 100% green without blocking the user!
+    # We include one PASSING test and one FAILING test to demonstrate the Triage Engine UI.
     logger.warning("All LLM providers failed or no API keys exist. Using Zero-Key Dummy Fallback!")
     return """
-def test_dummy_zero_key(page):
+def test_dummy_zero_key_pass(page):
     # Dummy test generated because no LLM API keys were provided.
     # This ensures the pipeline stays green and doesn't crash!
     pass
+
+def test_dummy_zero_key_fail(page):
+    # Intentional failure to demonstrate the Triage Engine catching and analyzing failed tests!
+    assert False, "Intentional failure to trigger Triage Engine"
 """
 
 def _call_gemini(prompt: str) -> str:

@@ -111,7 +111,13 @@ async def websocket_endpoint(websocket: WebSocket, run_id: str):
             await websocket.send_json(ws_message)
             
             if ws_message.get("event") == "completed" or ws_message.get("status") == "completed":
-                break
+                # Keep alive so frontend hook is happy during handover
+                app_logger.info(f"WebSocket: Job {run_id} transitioned to completed. Keeping alive.")
+                try:
+                    while True:
+                        await websocket.receive_text()
+                except WebSocketDisconnect:
+                    break
     except WebSocketDisconnect:
         app_logger.info(f"WebSocket disconnected for job: {run_id}")
     except Exception as e:

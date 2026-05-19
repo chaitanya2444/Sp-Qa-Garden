@@ -368,8 +368,8 @@ def sync_failures_to_triage(xml_path: Path, run_id: str):
                 }
                 
                 try:
-                    # Use environment variable for Triage Engine URL or fallback to localhost:8000/triage (Nginx proxy)
-                    triage_endpoint = os.getenv("TRIAGE_ENGINE_URL", "http://localhost:8000/triage")
+                    # Use environment variable for Triage Engine URL or fallback to localhost:8004 (direct port)
+                    triage_endpoint = os.getenv("TRIAGE_ENGINE_URL", "http://localhost:8004")
                     triage_url = f"{triage_endpoint}/api/triage"
                     
                     requests.post(triage_url, json=payload, timeout=15)
@@ -381,7 +381,7 @@ def sync_failures_to_triage(xml_path: Path, run_id: str):
         
         # FINAL SIGNAL: Mark run as completed in Triage Engine
         try:
-            triage_endpoint = os.getenv("TRIAGE_ENGINE_URL", "http://localhost:8000/triage")
+            triage_endpoint = os.getenv("TRIAGE_ENGINE_URL", "http://localhost:8004")
             requests.post(f"{triage_endpoint}/api/complete/{run_id}", timeout=10)
             logger.info(f"Sent completion signal to Triage Engine for run: {run_id}")
         except Exception as e:
