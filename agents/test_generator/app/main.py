@@ -89,11 +89,46 @@ async def websocket_endpoint(websocket: WebSocket, run_id: str):
     await websocket.accept()
     app_logger.info(f"WebSocket connection established for job: {run_id}")
     
-    # Each connection gets a queue to receive broadcasts
+    # 1. Check if there is a recorded state for this job
+    from app.routers.testgen import jobs
+    job_data = jobs.get(run_id)
+    if job_data:
+        status = job_data.get("status")
+        if status in ["completed", "failed"]:
+            # If already completed or failed, send the final state immediately
+            event_type = "completed" if status == "completed" else "error"
+            ws_message = {
+                "event": event_type,
+                "agent": "test_generator",
+                "status": status,
+                "percent": job_data.get("percent", 100),
+                "metrics": job_data.get("metrics"),
+                "error": job_data.get("error"),
+                "message": job_data.get("error") or job_data.get("message")
+            }
+            await websocket.send_json(ws_message)
+            app_logger.info(f"WebSocket: Job {run_id} is already {status}. Sending final state and keeping alive.")
+            try:
+                while True:
+                    await websocket.receive_text()
+            except WebSocketDisconnect:
+                pass
+            return
+
+    # 2. Otherwise, fall back to real-time subscription
     from app.utils.sse_manager import sse_manager
     queue = await sse_manager.connect()
     
     try:
+        # Send initial "running" status if we know it's running
+        if job_data and job_data.get("status") == "running":
+            await websocket.send_json({
+                "event": "progress",
+                "agent": "test_generator",
+                "status": "running",
+                "percent": job_data.get("percent", 10)
+            })
+
         while True:
             # Receive from SSE manager and send to WebSocket
             message_json = await queue.get()

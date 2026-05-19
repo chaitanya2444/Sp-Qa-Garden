@@ -1,6 +1,6 @@
 """Router for test case generation endpoints."""
 from datetime import datetime
-from typing import Optional
+from typing import Optional, Dict
 from fastapi import APIRouter, UploadFile, File, HTTPException, status, Query, BackgroundTasks
 from fastapi.responses import JSONResponse, StreamingResponse, FileResponse
 from app.services.llm_orchestrator import LLMOrchestratorService
@@ -17,6 +17,9 @@ import requests
 from pathlib import Path
 
 router = APIRouter(prefix="/api/v1", tags=["test-generation"])
+
+# Store job status for WebSocket
+jobs: Dict[str, dict] = {}
 
 
 @router.post(
@@ -108,6 +111,7 @@ async def generate_from_crawler(request: CrawlerHandoverRequest, background_task
             )
 
         # Trigger background processing
+        jobs[request.run_id] = {"status": "running", "percent": 10}
         background_tasks.add_task(run_test_generation_pipeline, request.run_id, request.locators_path, request.target_url)
         
         # Broadcast that input was received
@@ -146,6 +150,7 @@ async def run_test_generation_pipeline(run_id: str, locators_path: str, target_u
     model_used = "unknown" # Define early to avoid UnboundLocalError
     try:
         app_logger.info(f"Starting background generation for run: {run_id}")
+        jobs[run_id] = {"status": "running", "percent": 10}
         
         # Check if input is directory or file
         path_obj = Path(locators_path)
@@ -694,6 +699,11 @@ LOCATORS:
         # -----------------------------------
 
         # 3. Final completion broadcast (moved here to ensure files are ready)
+        jobs[run_id] = {
+            "status": "completed",
+            "percent": 100,
+            "metrics": metrics
+        }
         await sse_manager.broadcast(
             event_type="completed",
             data={
@@ -707,6 +717,12 @@ LOCATORS:
 
     except Exception as e:
         app_logger.error(f"Background generation error for run {run_id}: {str(e)}", exc_info=True)
+        jobs[run_id] = {
+            "status": "failed",
+            "percent": 0,
+            "error": str(e),
+            "message": str(e)
+        }
         # Broadcast error
         await sse_manager.broadcast(
             event_type="generation_error",
