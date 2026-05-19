@@ -219,7 +219,7 @@ export function useWebSocket({ runId, onMessage }: UseWebSocketOptions = {}) {
                                     headers: { 'X-API-Key': API_KEY }
                                 }).then(() => {
                                     // Delay agent path switch so the current connection can close gracefully
-                                    setTimeout(() => setCurrentAgentPath('test_gen'), 1000);
+                                    setTimeout(() => setCurrentAgentPath('test_gen'), 200);
                                 }).catch(err => {
                                     console.error("Handover to Test Generator failed", err);
                                     toast({
@@ -233,12 +233,12 @@ export function useWebSocket({ runId, onMessage }: UseWebSocketOptions = {}) {
                             // Backend already triggered Playwright Gen internally.
                             // Just update UI state and switch WebSocket to listen to it.
                             updateAgent(runId, 'script_generator', { status: 'running', progress: 10 });
-                            setTimeout(() => setCurrentAgentPath('playwright'), 1000);
+                            setTimeout(() => setCurrentAgentPath('playwright'), 200);
                         } else if (completedAgent === 'script_generator') {
                             // Backend already triggered CI/CD internally.
                             // Just update UI state and switch WebSocket to listen to it.
                             updateAgent(runId, 'executor', { status: 'running', progress: 10 });
-                            setTimeout(() => setCurrentAgentPath('cicd'), 1000);
+                            setTimeout(() => setCurrentAgentPath('cicd'), 200);
                         } else if (completedAgent === 'executor') {
                             // Check for failures in metrics
                             const failedTests = payload.metrics?.failed || 0;
@@ -248,7 +248,7 @@ export function useWebSocket({ runId, onMessage }: UseWebSocketOptions = {}) {
                                 updateAgent(runId, 'triage', { status: 'running', progress: 10 });
                                 // Triage is triggered automatically by the CICD agent via webhook, 
                                 // but we need to switch the websocket port to listen to it.
-                                setTimeout(() => setCurrentAgentPath('triage'), 2000);
+                                setTimeout(() => setCurrentAgentPath('triage'), 500);
                             } else {
                                 // All passed, pipeline finished
                                 updateAgent(runId, 'triage', { status: 'skipped' });
