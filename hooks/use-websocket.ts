@@ -230,25 +230,15 @@ export function useWebSocket({ runId, onMessage }: UseWebSocketOptions = {}) {
                                 });
                             }
                         } else if (completedAgent === 'test_generator') {
+                            // Backend already triggered Playwright Gen internally.
+                            // Just update UI state and switch WebSocket to listen to it.
                             updateAgent(runId, 'script_generator', { status: 'running', progress: 10 });
-                            axios.post(`${getAgentUrl('playwright')}/generate/tests`, {
-                                run_id: runId
-                            }, {
-                                headers: { 'X-API-Key': API_KEY }
-                            }).then(() => {
-                                // Delay port switch
-                                setTimeout(() => setCurrentAgentPath('playwright'), 1000);
-                            }).catch(err => console.error("Handover to Playwright Gen failed", err));
+                            setTimeout(() => setCurrentAgentPath('playwright'), 1000);
                         } else if (completedAgent === 'script_generator') {
+                            // Backend already triggered CI/CD internally.
+                            // Just update UI state and switch WebSocket to listen to it.
                             updateAgent(runId, 'executor', { status: 'running', progress: 10 });
-                            axios.post(`${getAgentUrl('cicd')}/generate/tests`, {
-                                run_id: runId
-                            }, {
-                                headers: { 'X-API-Key': API_KEY }
-                            }).then(() => {
-                                // Delay port switch
-                                setTimeout(() => setCurrentAgentPath('cicd'), 1000);
-                            }).catch(err => console.error("Handover to CI/CD (Executor) failed", err));
+                            setTimeout(() => setCurrentAgentPath('cicd'), 1000);
                         } else if (completedAgent === 'executor') {
                             // Check for failures in metrics
                             const failedTests = payload.metrics?.failed || 0;
