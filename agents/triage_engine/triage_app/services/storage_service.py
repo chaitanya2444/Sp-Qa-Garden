@@ -47,6 +47,28 @@ def store_result(result: dict) -> str:
     global _storage
     _storage = _load_db()
     
+    # Check if a result for this run_id and test_name already exists to prevent duplicates
+    run_id = result.get("run_id")
+    test_name = result.get("test_name")
+    
+    if run_id and test_name:
+        for res_id, res in _storage.items():
+            if res.get("run_id") == run_id and res.get("test_name") == test_name:
+                # Merge incoming result with existing (preserving screenshot/source_code/etc if the incoming ones are missing)
+                updated_res = {**res, **result}
+                if not result.get("screenshot") and res.get("screenshot"):
+                    updated_res["screenshot"] = res["screenshot"]
+                if not result.get("source_code") and res.get("source_code"):
+                    updated_res["source_code"] = res["source_code"]
+                
+                # Retain original ID and timestamp
+                updated_res["id"] = res_id
+                updated_res["created_at"] = res.get("created_at", datetime.now().isoformat())
+                
+                _storage[res_id] = updated_res
+                _save_db(_storage)
+                return res_id
+                
     result_id = str(uuid.uuid4())
     
     # Add metadata

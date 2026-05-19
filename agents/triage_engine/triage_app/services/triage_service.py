@@ -409,5 +409,6 @@ Logs: {payload.logs}
         "playwright_script_endpoint": payload.playwright_script_endpoint,
         "triage_label": triage_label,
         "run_id": payload.run_id,
+        "test_name": payload.test_name,
     }
 

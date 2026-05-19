@@ -37,6 +37,7 @@ class TriageOutput(BaseModel):
     id: Optional[str] = None
     created_at: Optional[str] = None
     run_id: Optional[str] = None
+    test_name: Optional[str] = None
 
 
 class TriageResultList(BaseModel):
